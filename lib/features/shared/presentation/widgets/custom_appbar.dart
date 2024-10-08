@@ -1,9 +1,8 @@
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/presentation/cubits/search/search_cubit.dart';
-import 'package:cine_world/features/shared/presentation/cubit/darkmode_cubit.dart';
-import 'package:cine_world/features/shared/presentation/delegates/search_movie_delegate.dart';
+import 'package:cine_world/features/movies/movies.dart';
+import 'package:cine_world/features/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomAppbar extends StatelessWidget {
@@ -11,8 +10,6 @@ class CustomAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
     final isDarkMode = context.watch<DarkmodeCubit>().state.isDarkMode;
 
     return SafeArea(
@@ -23,16 +20,9 @@ class CustomAppbar extends StatelessWidget {
             width: double.infinity,
             child: Row(
               children: [
-                Icon(
-                  Icons.movie_outlined,
-                  color: colors.primary,
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  "Cinemadia",
-                  style: textTheme.titleMedium,
+                SvgPicture.asset(
+                  'assets/logo_home.svg',
+                  width: 115,
                 ),
                 const Spacer(),
                 IconButton(
