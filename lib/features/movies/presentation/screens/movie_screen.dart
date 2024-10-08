@@ -7,7 +7,7 @@ import 'package:cine_world/features/movies/presentation/cubits/cubits.dart';
 import 'package:flutter/material.dart';
 
 class MovieScreen extends StatefulWidget {
-  static const name = 'movie-screen';
+  static const name = 'id-movie-screen';
 
   final String movieId;
   const MovieScreen({super.key, required this.movieId});

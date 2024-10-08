@@ -42,4 +42,24 @@ class MovieMapper {
       video: movie.video,
       voteAverage: movie.voteAverage,
       voteCount: movie.voteCount);
+
+  static Movie moviesByActorToEntity(CastByActor movie) => Movie(
+      adult: movie.adult,
+      backdropPath: movie.backdropPath != ''
+          ? 'https://image.tmdb.org/t/p/w500/${movie.backdropPath}'
+          : 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png',
+      genreIds: movie.genreIds.map((e) => e.toString()).toList(),
+      id: movie.id,
+      originalLanguage: movie.originalLanguage,
+      originalTitle: movie.originalTitle,
+      overview: movie.overview,
+      popularity: movie.popularity,
+      posterPath: movie.posterPath != ''
+          ? 'https://image.tmdb.org/t/p/w500/${movie.posterPath}'
+          : 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png',
+      releaseDate: movie.releaseDate,
+      title: movie.title,
+      video: movie.video,
+      voteAverage: movie.voteAverage,
+      voteCount: movie.voteCount);
 }

@@ -5,8 +5,16 @@ import 'package:cine_world/features/movies/presentation/views/views.dart';
 
 final appRouter = GoRouter(initialLocation: '/', routes: [
   StatefulShellRoute.indexedStack(
-      builder: (context, state, navigationShell) =>
-          HomeScreen(currentChild: navigationShell),
+      builder: (context, state, navigationShell) {
+        final name = state.topRoute?.name ?? '';
+        final isBottomNavigationVisible =
+            !name.startsWith('id-') ? true : false;
+
+        return HomeScreen(
+          currentChild: navigationShell,
+          isBottomNavigationVisible: isBottomNavigationVisible,
+        );
+      },
       branches: <StatefulShellBranch>[
         StatefulShellBranch(routes: [
           GoRoute(
@@ -20,6 +28,14 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
                   builder: (context, state) {
                     final movieId = state.pathParameters['id'] ?? 'no-id';
                     return MovieScreen(movieId: movieId);
+                  },
+                ),
+                GoRoute(
+                  path: 'actor/:id',
+                  name: ActorScreen.name,
+                  builder: (context, state) {
+                    final actorId = state.pathParameters['id'] ?? 'no-id';
+                    return ActorScreen(actorId: actorId);
                   },
                 )
               ]),

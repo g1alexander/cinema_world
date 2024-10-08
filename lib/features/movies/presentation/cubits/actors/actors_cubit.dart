@@ -1,5 +1,4 @@
-import 'package:cine_world/features/movies/domain/entities/actor.dart';
-import 'package:cine_world/features/movies/infrastructure/repositories/actor_repository_impl.dart';
+import 'package:cine_world/features/movies/movies.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -19,5 +18,29 @@ class ActorsCubit extends Cubit<ActorsState> {
 
     emit(state.copyWith(
         isLoading: false, actorMap: {...state.actorMap, movieId: actors}));
+  }
+
+  Future<void> loadActor(String actorId) async {
+    if (state.actorMap[actorId] != null || state.isLoading) return;
+
+    emit(state.copyWith(isLoading: true));
+
+    final [actor as Actor, images as List<String>, movies as List<Movie>] =
+        await Future.wait([
+      _actorRepository.getActorById(actorId),
+      _actorRepository.getImagesByActor(actorId),
+      _actorRepository.getMoviesByActor(actorId),
+    ]);
+
+    // final actor = await _actorRepository.getActorById(actorId);
+    // final images = await _actorRepository.getImagesByActor(actorId);
+    // final movies = await _actorRepository.getMoviesByActor(actorId);
+
+    emit(state.copyWith(
+      isLoading: false,
+      actor: actor,
+      images: images,
+      movies: movies,
+    ));
   }
 }
