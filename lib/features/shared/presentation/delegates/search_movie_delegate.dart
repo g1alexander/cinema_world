@@ -65,7 +65,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   }
 
   @override
-  String get searchFieldLabel => 'Buscar película';
+  String get searchFieldLabel => 'Search movie';
 
   @override
   List<Widget>? buildActions(BuildContext context) {

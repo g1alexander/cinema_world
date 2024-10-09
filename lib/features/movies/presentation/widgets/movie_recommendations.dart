@@ -34,7 +34,7 @@ class _MovieRecommendationsState extends State<MovieRecommendations> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Recomendaciones", style: textTheme.titleLarge),
+          Text("Recommendations", style: textTheme.titleLarge),
           const SizedBox(
             height: 5,
           ),

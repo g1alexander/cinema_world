@@ -27,26 +27,9 @@ class _PopularsViewState extends State<PopularsView> {
     final movies = context.watch<MoviesCubit>().state.popularMovies;
 
     if (movies.isEmpty) {
-      final colors = Theme.of(context).colorScheme;
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.favorite_outline_sharp,
-              color: colors.primary,
-              size: 60,
-            ),
-            Text(
-              'Ohhh no!',
-              style: TextStyle(fontSize: 30, color: colors.primary),
-            ),
-            const Text(
-              "No hay películas populares",
-              style: TextStyle(fontSize: 20, color: Colors.black45),
-            ),
-          ],
+      return const Center(
+        child: CircularProgressIndicator(
+          strokeWidth: 2,
         ),
       );
     }

@@ -65,8 +65,7 @@ class _MovieVideoTrailerState extends State<MovieVideoTrailer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (key.isNotEmpty) Text("Videos", style: textTheme.titleLarge),
-          if (key.isNotEmpty) const Text("Trailer [Doblado]"),
+          if (key.isNotEmpty) Text("Trailer", style: textTheme.titleLarge),
           if (key.isNotEmpty)
             const SizedBox(
               height: 5,

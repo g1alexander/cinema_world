@@ -62,22 +62,22 @@ class _HomeViewState extends State<HomeView> {
               MoviesSlideshow(movies: getMoviesSlideshow),
               MovieHorizontalListview(
                 movies: nowPlayingMovies,
-                title: "En cines",
+                title: "In theaters",
                 subTitle: HumanFormats.dateFormat(date: DateTime.now()),
                 loadNextPage: () =>
                     context.read<MoviesCubit>().loadNextPageNowPlaying(),
               ),
               MovieHorizontalListview(
                 movies: upcomingMovies,
-                title: "Próximamente",
-                subTitle: 'En este mes',
+                title: "Upcoming",
+                subTitle: 'This month',
                 loadNextPage: () =>
                     context.read<MoviesCubit>().loadNextPageUpcoming(),
               ),
               MovieHorizontalListview(
                 movies: topRatedMovies,
-                title: "Mejor calificadas",
-                subTitle: 'Desde siempre',
+                title: "Top rated",
+                subTitle: 'from always',
                 loadNextPage: () =>
                     context.read<MoviesCubit>().loadNextPageTopRated(),
               ),

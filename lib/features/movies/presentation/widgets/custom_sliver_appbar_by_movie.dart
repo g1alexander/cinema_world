@@ -42,10 +42,10 @@ class CustomSliverAppbarByMovieState extends State<CustomSliverAppbarByMovie> {
           },
           icon: isFavorite
               ? const Icon(
-                  Icons.favorite_rounded,
+                  Icons.bookmark,
                   color: Colors.red,
                 )
-              : const Icon(Icons.favorite_border),
+              : const Icon(Icons.bookmark_border),
         ),
       ],
       flexibleSpace: FlexibleSpaceBar(

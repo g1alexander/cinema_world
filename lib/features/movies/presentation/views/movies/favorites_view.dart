@@ -44,16 +44,19 @@ class _FavoritesViewState extends State<FavoritesView> {
               'Ohhh no!',
               style: TextStyle(fontSize: 30, color: colors.primary),
             ),
-            const Text(
-              "No tiene películas favoritas",
-              style: TextStyle(fontSize: 20, color: Colors.black45),
+            Text(
+              "You have no saved movies",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Color.fromARGB(140, colors.secondary.red,
+                      colors.secondary.green, colors.secondary.blue)),
             ),
             const SizedBox(
               height: 20,
             ),
             FilledButton.tonal(
                 onPressed: () => context.go('/'),
-                child: const Text("Empieza a buscar"))
+                child: const Text("Start searching"))
           ],
         ),
       );

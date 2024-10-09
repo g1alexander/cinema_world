@@ -89,14 +89,13 @@ class _MovieDetails extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
                   movie.posterPath,
-                  width: size.width * 0.3,
+                  width: size.width * 0.37,
                 ),
               ),
               const SizedBox(
                 width: 10,
               ),
-              SizedBox(
-                width: (size.width - 40) * 0.7,
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -108,12 +107,21 @@ class _MovieDetails extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    MovieRating(
-                      voteAverage: movie.voteAverage,
-                    ),
                     Row(
                       children: [
-                        const Text("Estreno:",
+                        MovieRating(
+                          voteAverage: movie.voteAverage,
+                        ),
+                        const SizedBox(width: 20),
+                        const Icon(Icons.access_time_filled_outlined),
+                        const SizedBox(width: 5),
+                        Text('${movie.runtime} '),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        const Text("Release:",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
