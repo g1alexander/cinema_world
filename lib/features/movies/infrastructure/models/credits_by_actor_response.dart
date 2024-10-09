@@ -39,6 +39,7 @@ class CastByActor {
   final int? order;
   final String? department;
   final String? job;
+  final int? runtime;
 
   CastByActor({
     required this.adult,
@@ -60,6 +61,7 @@ class CastByActor {
     this.order,
     this.department,
     this.job,
+    this.runtime,
   });
 
   factory CastByActor.fromJson(Map<String, dynamic> json) => CastByActor(
@@ -84,5 +86,6 @@ class CastByActor {
         order: json["order"],
         department: json["department"],
         job: json["job"],
+        runtime: json["runtime"],
       );
 }
