@@ -19,10 +19,12 @@ class Movie {
   final String title;
   final bool video;
   final double voteAverage;
+  final String runtime;
   final int voteCount;
 
   Movie(
-      {required this.adult,
+      {required this.runtime,
+      required this.adult,
       required this.backdropPath,
       required this.genreIds,
       required this.id,

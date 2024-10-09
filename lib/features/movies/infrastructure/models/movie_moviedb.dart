@@ -13,8 +13,10 @@ class MovieMovieDB {
   final bool video;
   final double voteAverage;
   final int voteCount;
+  final int runtime;
 
   MovieMovieDB({
+    required this.runtime,
     required this.adult,
     required this.backdropPath,
     required this.genreIds,
@@ -48,6 +50,7 @@ class MovieMovieDB {
         video: json["video"] ?? false,
         voteAverage: json["vote_average"]?.toDouble() ?? 0,
         voteCount: json["vote_count"] ?? 0,
+        runtime: json["runtime"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -67,6 +70,7 @@ class MovieMovieDB {
         "video": video,
         "vote_average": voteAverage,
         "vote_count": voteCount,
+        "runtime": runtime,
       };
 
   static DateTime? parseDate(String date) {
