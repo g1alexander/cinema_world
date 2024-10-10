@@ -45,6 +45,7 @@ flutter:
   assets:
     - .env
     - assets/
+    - assets/splash/
 
   # fonts:
   #   - family: Schyler
@@ -65,9 +66,13 @@ flutter_launcher_icons:
   remove_alpha_ios: true
 
 flutter_native_splash:
-  color: "#222347"
-  image: assets/logo_splash.png
-  # branding: assets/branding-development.png
-  # color_dark: "#121212"
-  # image_dark: assets/logo-development.png
-  # branding_dark: assets/branding-development.png
+  android: true
+  ios: true
+  web: false
+  background_image: "assets/splash/background.png"
+  image: "assets/splash/logo.png"
+  branding: "assets/splash/branding.png"
+  android_12:
+    color: "#141418"
+    image: "assets/splash/logo_android.png"
+    branding: "assets/splash/branding_android.png"
