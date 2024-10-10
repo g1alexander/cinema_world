@@ -1,8 +1,7 @@
 import 'package:cine_world/config/get_it/service_locator.dart';
 import 'package:cine_world/config/helpers/human_formats.dart';
-import 'package:cine_world/features/movies/presentation/cubits/cubits.dart';
-import 'package:cine_world/features/movies/presentation/cubits/storage/storage_movies_cubit.dart';
-import 'package:cine_world/features/shared/presentation/cubit/darkmode_cubit.dart';
+import 'package:cine_world/features/movies/movies.dart';
+import 'package:cine_world/features/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cine_world/config/theme/app_theme.dart';
@@ -14,6 +13,8 @@ void main() async {
   await HumanFormats.initialize();
 
   await dotenv.load(fileName: '.env');
+
+  await KeyValueStorageServiceImpl().getInstance();
 
   serviceLocatorInit();
   runApp(const BlocsProviders());
