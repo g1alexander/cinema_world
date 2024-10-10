@@ -26,6 +26,8 @@ class CustomSliverAppbarByMovieState extends State<CustomSliverAppbarByMovie> {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
+
     final size = MediaQuery.of(context).size;
     final isFavorite = context.watch<StorageMoviesCubit>().state.isFavorite;
 
@@ -49,7 +51,12 @@ class CustomSliverAppbarByMovieState extends State<CustomSliverAppbarByMovie> {
         ),
       ],
       flexibleSpace: FlexibleSpaceBar(
-        titlePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        titlePadding: const EdgeInsets.only(bottom: 0),
+        title: _CustomGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: const [0.7, 1.0],
+            colors: [Colors.transparent, scaffoldBackgroundColor]),
         background: Stack(
           children: [
             SizedBox.expand(
