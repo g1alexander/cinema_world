@@ -1,5 +1,4 @@
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/infrastructure/repositories/movie_repository_impl.dart';
+import 'package:cine_world/features/movies/movies.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,5 +40,14 @@ class MovieInfoCubit extends Cubit<MovieInfoState> {
 
     emit(state.copyWith(
         isLoading: false, recommendationsMovies: recommendations));
+  }
+
+  Future<void> loadWatchProviders(String id) async {
+    emit(state.copyWith(isLoading: true));
+
+    final watchProviders =
+        await _movieRepository.getWatchProvidersByMovieId(id);
+
+    emit(state.copyWith(isLoading: false, watchProviders: watchProviders));
   }
 }
