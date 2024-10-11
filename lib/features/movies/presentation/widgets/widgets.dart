@@ -7,3 +7,4 @@ export 'movie_rating.dart';
 export 'movie_recommendations.dart';
 export 'movie_video_trailer.dart';
 export 'movies_slideshow.dart';
+export 'watch_movie/watch_movie.dart';

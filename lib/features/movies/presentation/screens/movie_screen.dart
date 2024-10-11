@@ -48,21 +48,37 @@ class _MovieScreenState extends State<MovieScreen> {
     }
 
     return Scaffold(
-      body: CustomScrollView(
-        physics: const ClampingScrollPhysics(),
-        slivers: [
-          CustomSliverAppbarByMovie(
-            movie: movie,
-          ),
-          SliverList(
-              delegate: SliverChildBuilderDelegate(
-                  (context, index) => _MovieDetails(
-                        movie: movie,
-                      ),
-                  childCount: 1))
-        ],
-      ),
-    );
+        body: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
+          slivers: [
+            CustomSliverAppbarByMovie(
+              movie: movie,
+            ),
+            SliverList(
+                delegate: SliverChildBuilderDelegate(
+                    (context, index) => _MovieDetails(
+                          movie: movie,
+                        ),
+                    childCount: 1))
+          ],
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              builder: (BuildContext context) => SingleChildScrollView(
+                child: Providers(movieId: movie.id.toString()),
+              ),
+            );
+          },
+          label: const Text('Watch movie'),
+          icon: const Icon(Icons.ondemand_video_outlined),
+        ));
   }
 }
 
