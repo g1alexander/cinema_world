@@ -1,8 +1,5 @@
-import 'package:cine_world/config/constants/environment.dart';
-import 'package:cine_world/features/movies/domain/datasources/movies_datasource.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/infrastructure/mappers/mappers.dart';
-import 'package:cine_world/features/movies/infrastructure/models/models.dart';
+import 'package:cine_world/config/config.dart';
+import 'package:cine_world/features/movies/movies.dart';
 
 import 'package:dio/dio.dart';
 
@@ -93,5 +90,14 @@ class MoviedbDatasource extends MoviesDatasource {
     final response = await dio.get('/movie/$id/similar');
 
     return _jsonToMovies(response.data);
+  }
+
+  @override
+  Future<List<WatchProviders>> getWatchProvidersByMovieId(String id) async {
+    final response = await dio.get('/movie/$id/watch/providers');
+
+    final watchProviders = ProvidersResponse.fromJson(response.data);
+
+    return MovieMapper.watchProvidersToEntity(watchProviders);
   }
 }
