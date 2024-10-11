@@ -1,0 +1,120 @@
+# name: bundle
+# on:
+#   push:
+#     branches: [main]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+#         with:
+#           ref: main
+
+#       - name: Decode keystore file
+#         run: |
+#           echo "$CUSTOMERS_KEY_JKS_BASE64" | base64 -d > android/customers_key.jks
+
+#       - name: Decode key.properties file
+#         run: |
+#           echo "$KEY_PROPERTIES_BASE64" | base64 -d > android/key.properties
+
+#       - name: Set up Flutter
+#         uses: subosito/flutter-action@v2
+#         with:
+#           channel: stable
+#           flutter-version-file: pubspec.yaml
+
+#       - name: Set up JDK 17
+#         uses: actions/setup-java@v2
+#         with:
+#           java-version: "17"
+#           distribution: "adopt"
+
+#       - name: Change version in pubspec.yaml
+#         id: update_version
+#         run: |
+#           VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2)
+#           IFS="." read -r major minor patch <<< "$VERSION"
+#           patch_build=$(echo $patch | cut -d '+' -f 1)
+#           build_number=$(echo $patch | cut -d '+' -f 2)
+#           patch=$((patch_build + 1))
+#           NEW_VERSION="$major.$minor.$patch"
+#           CODE=$((build_number + 1))
+#           sed -i "s/version: $VERSION/version: $NEW_VERSION+$CODE/" pubspec.yaml
+#           echo "New version: $NEW_VERSION+$CODE"
+#           echo "::set-output name=new_version::$NEW_VERSION"
+#           echo "::set-output name=code::$CODE"
+
+#       - name: Create local.properties
+#         run: |
+#           echo "sdk.dir=$ANDROID_HOME" > android/local.properties
+#           echo "flutter.sdk=$HOME/.flutter" >> android/local.properties
+#           echo "flutter.buildMode=release" >> android/local.properties
+#           echo "flutter.versionName=${{ steps.update_version.outputs.new_version }}" >> android/local.properties
+#           echo "flutter.versionCode=${{ steps.update_version.outputs.code }}" >> android/local.properties
+#           echo "flutter.minSdkVersion=34" >> android/local.properties
+#           echo "flutter.targetSdkVersion=34" >> android/local.properties
+#           echo "flutter.compileSdkVersion=34" >> android/local.properties
+
+#       - name: Commit changes
+#         run: |
+#           git config --global user.name 'github-actions[bot]'
+#           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+#           git add pubspec.yaml
+#           git commit -m "Bump version to ${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}"
+#           git push
+
+#       - name: Create env
+#         run: |
+#           echo "APP_URL=$APP_URL" > .env
+#           echo "APP_URL_FAST=$APP_URL_FAST" >> .env
+#           echo "ENVIRONMENT=$ENVIRONMENT" >> .env
+#           echo "APP_URL=$APP_URL_DEV" > .env.test
+#           echo "APP_URL_FAST=$APP_URL_FAST_DEV" >> .env.test
+#           echo "ENVIRONMENT=$ENVIRONMENT_DEV" >> .env.test
+
+#       - name: Install dependencies
+#         run: flutter pub get
+
+#       - name: Build ABB
+#         run: flutter build appbundle
+
+#       - name: Create tag
+#         id: create_tag
+#         run: |
+#           git tag -a v${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }} -m "Release version ${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}"
+#           git push origin v${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}
+
+#       - name: Create GitHub Release
+#         id: create_release
+#         uses: actions/create-release@v1
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+#         with:
+#           tag_name: v${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}
+#           release_name: Release ${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}
+#           draft: false
+#           prerelease: false
+
+#       - name: Upload build artifact to release
+#         uses: actions/upload-release-asset@v1
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+#         with:
+#           upload_url: ${{ steps.create_release.outputs.upload_url }}
+#           asset_path: build/app/outputs/bundle/release/app-release.aab
+#           asset_name: app-release.aab
+#           asset_content_type: application/vnd.android.package-archive
+
+# env:
+#   CUSTOMERS_KEY_JKS_BASE64: ${{ secrets.CUSTOMERS_KEY_JKS_BASE64 }}
+#   KEY_PROPERTIES_BASE64: ${{ secrets.KEY_PROPERTIES_BASE64 }}
+#   APP_URL: ${{ secrets.APP_URL }}
+#   APP_URL_FAST: ${{ secrets.APP_URL_FAST }}
+#   ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+#   APP_URL_DEV: ${{ secrets.APP_URL_DEV }}
+#   APP_URL_FAST_DEV: ${{ secrets.APP_URL_FAST_DEV }}
+#   ENVIRONMENT_DEV: ${{ secrets.ENVIRONMENT_DEV }}
