@@ -1,6 +1,4 @@
-import 'package:cine_world/features/movies/domain/datasources/movies_datasource.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/domain/repositories/movies_repository.dart';
+import 'package:cine_world/features/movies/movies.dart';
 
 class MovieRepositoryImpl extends MoviesRepository {
   final MoviesDatasource datasource;
@@ -45,5 +43,10 @@ class MovieRepositoryImpl extends MoviesRepository {
   @override
   Future<List<Movie>> getRecommendationsByMovieId(String id) {
     return datasource.getRecommendationsByMovieId(id);
+  }
+
+  @override
+  Future<List<WatchProviders>> getWatchProvidersByMovieId(String id) {
+    return datasource.getWatchProvidersByMovieId(id);
   }
 }
