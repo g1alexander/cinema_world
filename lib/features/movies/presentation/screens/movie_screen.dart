@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cine_world/config/helpers/human_formats.dart';
 import 'package:cine_world/features/movies/domain/entities/movie.dart';
 import 'package:cine_world/features/movies/presentation/widgets/widgets.dart';
@@ -36,6 +37,7 @@ class _MovieScreenState extends State<MovieScreen> {
   Widget build(BuildContext context) {
     final Movie? movie =
         context.watch<MovieInfoCubit>().state.movieMap[widget.movieId];
+    final isLoading = context.watch<MovieInfoCubit>().state.isLoading;
 
     if (movie == null) {
       return const Scaffold(
@@ -63,7 +65,12 @@ class _MovieScreenState extends State<MovieScreen> {
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
+          onPressed: () async {
+            await context
+                .read<MovieInfoCubit>()
+                .loadWatchProviders("${movie.id}");
+            if (!context.mounted) return;
+
             showModalBottomSheet(
               context: context,
               shape: const RoundedRectangleBorder(
@@ -71,13 +78,16 @@ class _MovieScreenState extends State<MovieScreen> {
                   top: Radius.circular(20),
                 ),
               ),
-              builder: (BuildContext context) => SingleChildScrollView(
-                child: Providers(movieId: movie.id.toString()),
+              builder: (BuildContext context) => const SingleChildScrollView(
+                child: ProvidersWidget(),
               ),
             );
           },
           label: const Text('Watch movie'),
-          icon: const Icon(Icons.ondemand_video_outlined),
+          icon: isLoading
+              ? SpinPerfect(
+                  infinite: true, child: const Icon(Icons.refresh_rounded))
+              : const Icon(Icons.ondemand_video_outlined),
         ));
   }
 }
