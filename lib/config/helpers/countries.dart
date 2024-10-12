@@ -244,6 +244,6 @@ class Countries {
     int secondChar = isoCode.codeUnitAt(1) + 127397;
 
     // Combine the two characters into the flag emoji
-    return "${String.fromCharCode(firstChar) + String.fromCharCode(secondChar)} ${countryName[isoCode] ?? 'Unknown'}";
+    return "${countryName[isoCode] ?? 'Unknown'} ${String.fromCharCode(firstChar) + String.fromCharCode(secondChar)}";
   }
 }

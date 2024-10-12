@@ -6,6 +6,7 @@ class MovieInfoState extends Equatable {
   final List<Movie> recommendationsMovies;
   final String keyVideo;
   final List<WatchProviders> watchProviders;
+  final String keySearchProvider;
 
   const MovieInfoState({
     this.isLoading = false,
@@ -13,6 +14,7 @@ class MovieInfoState extends Equatable {
     this.recommendationsMovies = const [],
     this.movieMap = const {},
     this.watchProviders = const [],
+    this.keySearchProvider = '',
   });
 
   MovieInfoState copyWith({
@@ -21,6 +23,7 @@ class MovieInfoState extends Equatable {
     Map<String, Movie>? movieMap,
     List<Movie>? recommendationsMovies,
     List<WatchProviders>? watchProviders,
+    String? keySearchProvider,
   }) =>
       MovieInfoState(
         keyVideo: keyVideo ?? this.keyVideo,
@@ -29,6 +32,7 @@ class MovieInfoState extends Equatable {
         isLoading: isLoading ?? this.isLoading,
         movieMap: movieMap ?? this.movieMap,
         watchProviders: watchProviders ?? this.watchProviders,
+        keySearchProvider: keySearchProvider ?? this.keySearchProvider,
       );
 
   @override
@@ -38,5 +42,6 @@ class MovieInfoState extends Equatable {
         keyVideo,
         recommendationsMovies,
         watchProviders,
+        keySearchProvider,
       ];
 }

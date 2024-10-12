@@ -9,6 +9,24 @@ class MovieInfoCubit extends Cubit<MovieInfoState> {
 
   MovieInfoCubit(this._movieRepository) : super(const MovieInfoState());
 
+  void setState({
+    bool? isLoading,
+    String? keyVideo,
+    Map<String, Movie>? movieMap,
+    List<Movie>? recommendationsMovies,
+    List<WatchProviders>? watchProviders,
+    String? keySearchProvider,
+  }) {
+    emit(state.copyWith(
+      isLoading: isLoading,
+      keyVideo: keyVideo,
+      movieMap: movieMap,
+      recommendationsMovies: recommendationsMovies,
+      watchProviders: watchProviders,
+      keySearchProvider: keySearchProvider,
+    ));
+  }
+
   Future<void> loadMovie(String movieId) async {
     if (state.movieMap[movieId] != null || state.isLoading) return;
 
@@ -43,11 +61,45 @@ class MovieInfoCubit extends Cubit<MovieInfoState> {
   }
 
   Future<void> loadWatchProviders(String id) async {
+    if (state.watchProviders.isNotEmpty) return;
+
     emit(state.copyWith(isLoading: true));
 
     final watchProviders =
         await _movieRepository.getWatchProvidersByMovieId(id);
 
     emit(state.copyWith(isLoading: false, watchProviders: watchProviders));
+  }
+
+  void searchProvider(String searchKey) {
+    emit(state.copyWith(keySearchProvider: searchKey));
+  }
+
+  WatchProviders? get getWatchProvider {
+    if (state.watchProviders.isEmpty || state.watchProviders.isEmpty) {
+      return null;
+    }
+
+    final watchProvider = state.watchProviders
+        .firstWhere((element) => element.nameCountry == state.keySearchProvider,
+            orElse: () => WatchProviders(
+                  isoCode: '',
+                  nameCountry: '',
+                  streaming: [],
+                  rent: [],
+                  buy: [],
+                  ads: [],
+                ));
+
+    return watchProvider;
+  }
+
+  List<String> get listSearch {
+    if (state.watchProviders.isEmpty) return [];
+
+    final listFiltered =
+        state.watchProviders.map((e) => e.nameCountry).toList();
+
+    return listFiltered;
   }
 }

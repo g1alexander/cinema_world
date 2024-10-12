@@ -28,6 +28,7 @@ dependencies:
   card_swiper: ^3.0.1
   flutter_svg: ^2.0.10+1
   shared_preferences: ^2.3.2
+  searchfield: ^1.1.6
 
 dev_dependencies:
   flutter_test:

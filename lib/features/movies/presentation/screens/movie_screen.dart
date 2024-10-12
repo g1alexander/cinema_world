@@ -18,6 +18,8 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> {
+  late MovieInfoCubit movieInfoCubit;
+
   Future<void> _loadMovie(BuildContext context) async {
     await context.read<MovieInfoCubit>().loadMovie(widget.movieId);
   }
@@ -27,10 +29,22 @@ class _MovieScreenState extends State<MovieScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    movieInfoCubit = context.read<MovieInfoCubit>();
+  }
+
+  @override
   void initState() {
     super.initState();
     _loadMovie(context);
     _loadActors(context);
+  }
+
+  @override
+  void dispose() {
+    movieInfoCubit.setState(watchProviders: [], keySearchProvider: '');
+    super.dispose();
   }
 
   @override
@@ -73,14 +87,14 @@ class _MovieScreenState extends State<MovieScreen> {
 
             showModalBottomSheet(
               context: context,
+              isScrollControlled: true,
+              useSafeArea: true,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
               ),
-              builder: (BuildContext context) => const SingleChildScrollView(
-                child: ProvidersWidget(),
-              ),
+              builder: (BuildContext context) => const ProvidersWidget(),
             );
           },
           label: const Text('Watch movie'),
