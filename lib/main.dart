@@ -40,8 +40,23 @@ class BlocsProviders extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    _initializeDarkMode(context);
+    super.initState();
+  }
+
+  Future<void> _initializeDarkMode(BuildContext context) async {
+    await context.read<DarkmodeCubit>().getDarkMode();
+  }
 
   @override
   Widget build(BuildContext context) {
