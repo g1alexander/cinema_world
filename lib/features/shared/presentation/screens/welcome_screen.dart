@@ -1,4 +1,4 @@
-import 'package:cine_world/features/shared/shared.dart';
+import 'package:cinema_world/features/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';

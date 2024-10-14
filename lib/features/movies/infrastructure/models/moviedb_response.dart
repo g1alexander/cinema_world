@@ -1,4 +1,4 @@
-import 'package:cine_world/features/movies/infrastructure/models/movie_moviedb.dart';
+import 'package:cinema_world/features/movies/infrastructure/models/movie_moviedb.dart';
 
 class MovieDbResponse {
   final Dates? dates;

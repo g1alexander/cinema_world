@@ -1,4 +1,4 @@
-import 'package:cine_world/features/movies/movies.dart';
+import 'package:cinema_world/features/movies/movies.dart';
 
 class ActorMapper {
   static Actor castToEntity(Cast cast) => Actor(

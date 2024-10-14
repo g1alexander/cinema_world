@@ -1,5 +1,5 @@
-import 'package:cine_world/features/movies/domain/entities/actor.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/features/movies/domain/entities/actor.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
 
 abstract class ActorsRepository {
   Future<List<Actor>> getActorsByMovie(String movieId);

@@ -1,7 +1,7 @@
-import 'package:cine_world/features/movies/domain/datasources/actors_datasource.dart';
-import 'package:cine_world/features/movies/domain/entities/actor.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/domain/repositories/actors_repository.dart';
+import 'package:cinema_world/features/movies/domain/datasources/actors_datasource.dart';
+import 'package:cinema_world/features/movies/domain/entities/actor.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/features/movies/domain/repositories/actors_repository.dart';
 
 class ActorRepositoryImpl extends ActorsRepository {
   final ActorsDatasource datasource;

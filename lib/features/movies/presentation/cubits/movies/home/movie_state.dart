@@ -1,4 +1,4 @@
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
 import 'package:equatable/equatable.dart';
 
 class MovieState extends Equatable {

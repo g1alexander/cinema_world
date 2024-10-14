@@ -1,5 +1,5 @@
-import 'package:cine_world/features/movies/movies.dart';
-import 'package:cine_world/features/shared/shared.dart';
+import 'package:cinema_world/features/movies/movies.dart';
+import 'package:cinema_world/features/shared/shared.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getIt = GetIt.instance;

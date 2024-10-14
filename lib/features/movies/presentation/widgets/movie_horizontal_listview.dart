@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cine_world/config/helpers/human_formats.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/config/helpers/human_formats.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

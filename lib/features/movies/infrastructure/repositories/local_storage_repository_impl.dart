@@ -1,6 +1,6 @@
-import 'package:cine_world/features/movies/domain/datasources/local_storage_datasource.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/domain/repositories/local_storage_repository.dart';
+import 'package:cinema_world/features/movies/domain/datasources/local_storage_datasource.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/features/movies/domain/repositories/local_storage_repository.dart';
 
 class LocalStorageRepositoryImpl extends LocalStorageRepository {
   final LocalStorageDatasource datasource;

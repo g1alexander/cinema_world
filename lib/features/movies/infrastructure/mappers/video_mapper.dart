@@ -1,4 +1,4 @@
-import 'package:cine_world/features/movies/infrastructure/models/models.dart';
+import 'package:cinema_world/features/movies/infrastructure/models/models.dart';
 
 class VideoMapper {
   static String idVideoToEntity(VideosResponse data) {

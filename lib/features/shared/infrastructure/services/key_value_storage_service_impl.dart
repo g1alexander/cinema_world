@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cine_world/features/shared/shared.dart';
+import 'package:cinema_world/features/shared/shared.dart';
 
 class KeyValueStorageServiceImpl extends KeyValueStorageService {
   Future<SharedPreferences> getInstance() async =>

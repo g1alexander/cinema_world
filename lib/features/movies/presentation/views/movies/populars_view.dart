@@ -1,7 +1,7 @@
-import 'package:cine_world/features/movies/presentation/widgets/widgets.dart';
+import 'package:cinema_world/features/movies/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cine_world/features/movies/presentation/cubits/cubits.dart';
+import 'package:cinema_world/features/movies/presentation/cubits/cubits.dart';
 
 class PopularsView extends StatefulWidget {
   static const name = 'populars-view';

@@ -1,6 +1,6 @@
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/infrastructure/repositories/movie_repository_impl.dart';
-import 'package:cine_world/features/movies/presentation/cubits/cubits.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/features/movies/infrastructure/repositories/movie_repository_impl.dart';
+import 'package:cinema_world/features/movies/presentation/cubits/cubits.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MoviesCubit extends Cubit<MovieState> {

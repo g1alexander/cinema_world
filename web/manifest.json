@@ -1,6 +1,6 @@
 {
-    "name": "cine_world",
-    "short_name": "cine_world",
+    "name": "cinema_world",
+    "short_name": "cinema_world",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

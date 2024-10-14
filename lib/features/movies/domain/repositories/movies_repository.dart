@@ -1,4 +1,4 @@
-import 'package:cine_world/features/movies/movies.dart';
+import 'package:cinema_world/features/movies/movies.dart';
 
 abstract class MoviesRepository {
   Future<List<Movie>> getNowPlaying({int page = 1});

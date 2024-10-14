@@ -1,4 +1,4 @@
-import 'package:cine_world/features/movies/domain/domain.dart';
+import 'package:cinema_world/features/movies/domain/domain.dart';
 
 abstract class MoviesDatasource {
   Future<List<Movie>> getNowPlaying({int page = 1});

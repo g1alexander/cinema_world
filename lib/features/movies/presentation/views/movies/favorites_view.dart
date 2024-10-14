@@ -2,8 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
-import 'package:cine_world/features/movies/presentation/widgets/widgets.dart';
-import 'package:cine_world/features/movies/presentation/cubits/storage/storage_movies_cubit.dart';
+import 'package:cinema_world/features/movies/presentation/widgets/widgets.dart';
+import 'package:cinema_world/features/movies/presentation/cubits/storage/storage_movies_cubit.dart';
 
 class FavoritesView extends StatefulWidget {
   static const name = 'favorites-view';

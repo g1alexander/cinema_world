@@ -1,5 +1,5 @@
-import 'package:cine_world/config/config.dart';
-import 'package:cine_world/features/movies/movies.dart';
+import 'package:cinema_world/config/config.dart';
+import 'package:cinema_world/features/movies/movies.dart';
 
 class MovieMapper {
   static Movie movieDBToEntity(MovieMovieDB movieDB) => Movie(

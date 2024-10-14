@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 
-import 'package:cine_world/features/movies/movies.dart';
-import 'package:cine_world/features/shared/shared.dart';
+import 'package:cinema_world/features/movies/movies.dart';
+import 'package:cinema_world/features/shared/shared.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',

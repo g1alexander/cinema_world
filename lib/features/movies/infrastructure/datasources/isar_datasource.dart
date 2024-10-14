@@ -1,5 +1,5 @@
-import 'package:cine_world/features/movies/domain/datasources/local_storage_datasource.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/features/movies/domain/datasources/local_storage_datasource.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 

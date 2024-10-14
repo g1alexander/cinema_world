@@ -1,4 +1,4 @@
-import 'package:cine_world/config/helpers/human_formats.dart';
+import 'package:cinema_world/config/helpers/human_formats.dart';
 import 'package:flutter/material.dart';
 
 class MovieRating extends StatelessWidget {

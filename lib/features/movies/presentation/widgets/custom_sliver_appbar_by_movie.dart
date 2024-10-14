@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cine_world/features/movies/domain/entities/movie.dart';
-import 'package:cine_world/features/movies/presentation/cubits/storage/storage_movies_cubit.dart';
+import 'package:cinema_world/features/movies/domain/entities/movie.dart';
+import 'package:cinema_world/features/movies/presentation/cubits/storage/storage_movies_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 

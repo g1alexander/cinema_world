@@ -1,4 +1,4 @@
-# cine_world
+# cinema_world
 
 A new Flutter project.
 

@@ -1,5 +1,5 @@
-import 'package:cine_world/config/constants/environment.dart';
-import 'package:cine_world/features/movies/movies.dart';
+import 'package:cinema_world/config/constants/environment.dart';
+import 'package:cinema_world/features/movies/movies.dart';
 import 'package:dio/dio.dart';
 
 class ActorMoviedbDatasource extends ActorsDatasource {

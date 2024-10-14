@@ -1,11 +1,11 @@
-import 'package:cine_world/config/get_it/service_locator.dart';
-import 'package:cine_world/config/helpers/human_formats.dart';
-import 'package:cine_world/features/movies/movies.dart';
-import 'package:cine_world/features/shared/shared.dart';
+import 'package:cinema_world/config/get_it/service_locator.dart';
+import 'package:cinema_world/config/helpers/human_formats.dart';
+import 'package:cinema_world/features/movies/movies.dart';
+import 'package:cinema_world/features/shared/shared.dart';
 import 'package:flutter/material.dart';
 
-import 'package:cine_world/config/theme/app_theme.dart';
-import 'package:cine_world/config/router/app_router.dart';
+import 'package:cinema_world/config/theme/app_theme.dart';
+import 'package:cinema_world/config/router/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 

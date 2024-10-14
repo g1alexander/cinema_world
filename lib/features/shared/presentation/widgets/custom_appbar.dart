@@ -1,5 +1,5 @@
-import 'package:cine_world/features/movies/movies.dart';
-import 'package:cine_world/features/shared/shared.dart';
+import 'package:cinema_world/features/movies/movies.dart';
+import 'package:cinema_world/features/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
