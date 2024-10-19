@@ -15,7 +15,7 @@
 
 #       - name: Decode keystore file
 #         run: |
-#           echo "$CUSTOMERS_KEY_JKS_BASE64" | base64 -d > android/customers_key.jks
+#           echo "$KEY_JKS_BASE64" | base64 -d > android/keystore.jks
 
 #       - name: Decode key.properties file
 #         run: |
@@ -92,7 +92,7 @@
 #         id: create_release
 #         uses: actions/create-release@v1
 #         env:
-#           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+#           GITHUB_TOKEN: "$TOKEN_GITHUB"
 #         with:
 #           tag_name: v${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}
 #           release_name: Release ${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}
@@ -102,7 +102,7 @@
 #       - name: Upload build artifact to release
 #         uses: actions/upload-release-asset@v1
 #         env:
-#           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+#           GITHUB_TOKEN: "$TOKEN_GITHUB"
 #         with:
 #           upload_url: ${{ steps.create_release.outputs.upload_url }}
 #           asset_path: build/app/outputs/bundle/release/app-release.aab
@@ -110,8 +110,10 @@
 #           asset_content_type: application/vnd.android.package-archive
 
 # env:
-#   CUSTOMERS_KEY_JKS_BASE64: ${{ secrets.CUSTOMERS_KEY_JKS_BASE64 }}
+#   KEY_JKS_BASE64: ${{ secrets.KEY_JKS_BASE64 }}
 #   KEY_PROPERTIES_BASE64: ${{ secrets.KEY_PROPERTIES_BASE64 }}
+#   TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+#
 #   APP_URL: ${{ secrets.APP_URL }}
 #   APP_URL_FAST: ${{ secrets.APP_URL_FAST }}
 #   ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
