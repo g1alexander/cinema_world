@@ -8,7 +8,7 @@
 PRODUCT_NAME = cinema_world
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.cineWorld
+PRODUCT_BUNDLE_IDENTIFIER = com.g1alexander.cinemaworld
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 com.g1alexander. All rights reserved.
