@@ -1,4 +1,9 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.g1alexander.cinemaworld"
+>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="CinemaWorld"
         android:name="${applicationName}"
