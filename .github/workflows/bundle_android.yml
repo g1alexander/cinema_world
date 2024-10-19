@@ -87,8 +87,6 @@ jobs:
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: "$TOKEN_GITHUB"
         with:
           tag_name: v${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}
           release_name: Release ${{ steps.update_version.outputs.new_version }}+${{ steps.update_version.outputs.code }}
@@ -97,8 +95,6 @@ jobs:
 
       - name: Upload build artifact to release
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: "$TOKEN_GITHUB"
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: build/app/outputs/bundle/release/app-release.aab
@@ -108,5 +104,5 @@ jobs:
 env:
   KEY_JKS_BASE64: ${{ secrets.KEY_JKS_BASE64 }}
   KEY_PROPERTIES_BASE64: ${{ secrets.KEY_PROPERTIES_BASE64 }}
-  TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+  GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
   THE_MOVIE_KEY: ${{ secrets.THE_MOVIE_KEY }}
